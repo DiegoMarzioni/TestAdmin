@@ -7,8 +7,8 @@ async function bootstrap() {
   
   app.enableCors({
     origin: process.env.NODE_ENV === 'production' 
-      ? [process.env.FRONTEND_URL, /\.onrender\.com$/]
-      : ['http:
+      ? [process.env.FRONTEND_URL, /\.vercel\.app$/, /\.onrender\.com$/]
+      : ['http://localhost:3000'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept, Authorization',
     credentials: true,
@@ -24,6 +24,6 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
-  console.log(`🚀 Server running on http:
+  console.log(`🚀 Server running on port ${port}`);
 }
 bootstrap();
